@@ -150,120 +150,125 @@ After Creating
 
 Click on account name - Select Security Credentials
 
-
- 
-
-
-
-
-
-
-
+![Image29](https://github.com/gurpreet2828/Terraform-Jenkins/blob/76fddf0fb0b7a0df2aadbbb3c50f0b41cd1ff17d/Images/Image29.png)
 
 Click Create access key.
- 
+
+![Image30](https://github.com/gurpreet2828/Terraform-Jenkins/blob/76fddf0fb0b7a0df2aadbbb3c50f0b41cd1ff17d/Images/Image30.png)
 
 Note: Download the key file or copy the Access Key ID & Secret Access Key (Secret Key is shown only once!).
-After install and creating AWS account configure the AWS 
+
+After install and creating AWS account configure the AWS
+
 Configure AWS CLI with the New Access Key
+
 aws configure
-It will prompt you for:
-1.	AWS Access Key ID: Your access key from AWS IAM.
-2.	AWS Secret Access Key: Your secret key from AWS IAM.
-3.	Default region name: (e.g., us-east-1, us-west-2).
-4.	Default output format: (json, table, text — default is json).
+
+**It will prompt you for:**
+
+**1. AWS Access Key ID:** Your access key from AWS IAM.
+
+**2. AWS Secret Access Key:** Your secret key from AWS IAM.
+
+**3. Default region name:** (e.g., us-east-1, us-west-2).
+
+**4. Default output format:** (json, table, text — default is json).
+
 Enter access key and secret key which you will get from aws account
-Check credentials added to aws configure correctly
+
+Check credentials added to aws configure correctly by running the following command
+
 aws sts get-caller-identity
+
 If your AWS CLI is properly configured, you'll see a response like this:
 
- 
-Provisioning Infrastructure with Terraform
-Step1: Terraform init
- 
-Step 2: Terraform fmt
-Step 3: Terraform validate
- 
-Step 4: Terraform plan
- 
-Run Terraform plan 
-If it shows the following error
+![Image31](https://github.com/gurpreet2828/Terraform-Jenkins/blob/1ed8c055a8fdca1b99523afd9e8e612c60b9069a/Images/Image31.png)
+
+## Provisioning Infrastructure with Terraform
+
+### Step1: Terraform init
+
+![Image4](https://github.com/gurpreet2828/Terraform-Jenkins/blob/1ed8c055a8fdca1b99523afd9e8e612c60b9069a/Images/Image4.png)
+
+### Step 2: Terraform fmt
+
+### Step 3: Terraform validate
+
+![Image5](https://github.com/gurpreet2828/Terraform-Jenkins/blob/1ed8c055a8fdca1b99523afd9e8e612c60b9069a/Images/Image5.png)
+
+### Step 4: Terraform plan
+
+![Image6](https://github.com/gurpreet2828/Terraform-Jenkins/blob/1ed8c055a8fdca1b99523afd9e8e612c60b9069a/Images/Image6.png)
+
+Run following command
+
+Terraform plan
+
+**If it shows the following error:**
+
 Error: Invalid function argument
-│ 
+
 │   on modules/compute/main.tf line 17, in resource "aws_key_pair" "aws-key":
 │   17:   public_key = file(var.ssh_key_public)
 │     ├────────────────
 │     │ while calling file(path)
 │     │ var.ssh_key_public is "C:\\Users\\wessa\\.ssh\\id_rsa.pub"
- 
-Then in this case you must update the location of public and private keys under modules -compute - variables.tf
 
+![Image32](https://github.com/gurpreet2828/Terraform-Jenkins/blob/5e7df8cdc6d4e44fbe46f2ac103f4c2aa514e2a5/Images/Image32.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+***Then in this case you must update the location of public and private keys under modules -compute - variables.tf***
 
 As shown bellow in image
 
- 
+![Image7](https://github.com/gurpreet2828/Terraform-Jenkins/blob/5e7df8cdc6d4e44fbe46f2ac103f4c2aa514e2a5/Images/Image7.png)
 
-5: Terraform apply
+### 5: Terraform apply
+
 Provision terraform managed infrastructure. You must confirm by trying yes if you would like to continue and perform the actions described to provision your infrastructure resources
 
- 
 If everything works fine at end you will see the public Ip
 
-Step 4: Connect to EC2 instance 
+![Image8](https://github.com/gurpreet2828/Terraform-Jenkins/blob/5e7df8cdc6d4e44fbe46f2ac103f4c2aa514e2a5/Images/Image8.png)
+
+## Step 4: Connect to EC2 instance
+
 Ensure you're using the correct private key and the correct username (ec2-user) and ensure you're using the correct private key with the -i option.
+
 Example
+
 ssh -i /path/to/your-key.pem ec2-user@ 18.204.55.71
+
 ssh -i /root/.ssh/docker ec2-user@ 18.204.55.71
+
 you will see ec2 instance connected remotely with your ubuntu instance
- 
+
+![Image11](https://github.com/gurpreet2828/Terraform-Jenkins/blob/5e7df8cdc6d4e44fbe46f2ac103f4c2aa514e2a5/Images/Image11.png)
 
 You will see Jenkins and Ansible install on ec2 instance
+
 Check by running the following commands
+
 Jenkins –version
+
 Ansible --version
- 
-Step 5: Connect to Jenkins
-•	Now you can access Jenkins using the URL provided in the output
-•	See the password by running the following command
+
+![Image12](https://github.com/gurpreet2828/Terraform-Jenkins/blob/5e7df8cdc6d4e44fbe46f2ac103f4c2aa514e2a5/Images/Image12.png)
+
+## Step 5: Connect to Jenkins
+
+• Now you can access Jenkins using the URL provided in the output after terraform apply
+
+• See the password by running the following command on ec2 instance
+
 cat /var/lib/jenkins/secrets/initialAdminPassword
 
- 
+Enter the displayed password
 
-Enter the displayed password 
+![Image9](https://github.com/gurpreet2828/Terraform-Jenkins/blob/5e7df8cdc6d4e44fbe46f2ac103f4c2aa514e2a5/Images/Image9.png)
 
- 
+**i. Double click on install suggested plugins:**
 
-i.	Double click on install suggested plugins
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ii.	Create your admin user by completing all the requested information
+ii. Create your admin user by completing all the requested information
 
  
 
