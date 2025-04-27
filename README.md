@@ -18,6 +18,8 @@ In this project, I deployed Jenkins on AWS using Terraform, Docker, and Ubuntu L
 
 • Ubuntu Linux environment
 
+![Image2](https://github.com/gurpreet2828/Terraform-Jenkins/blob/9317912a18f09494599ddd1548eddd9f660531a7/Images/Image2.png)
+
 • AWS account with access keys
 
 ## Step-by-Step Implementation
@@ -98,34 +100,57 @@ It shows the following screen after transfer
 
 ![Image1](https://github.com/gurpreet2828/Terraform-Jenkins/blob/d3c64f054608028ade0e1933e4951a68f690774a/Images/Image1.png)
 
-Step2: Install Terraform and AWS on Ubuntu
-1. Update and install dependencies
+## Step2: Install Terraform and AWS on Ubuntu
+
+**1. Update and install dependencies:**
+
 sudo apt update && sudo apt install -y gnupg software-properties-common curl
-2. Add the HashiCorp GPG key
+
+**2. Add the HashiCorp GPG key:**
+
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-3. Add the HashiCorp repo
+
+**3. Add the HashiCorp repo:**
+
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+
 sudo tee /etc/apt/sources.list.d/hashicorp.list
-4. Update and install Terraform
+
+**4. Update and install Terraform:**
+
 sudo apt update
+
 sudo apt install terraform -y
-5. Verify installation
+
+**5. Verify installation:**
+
 terraform -v
- 
 
-AWSCLI Install
+## AWSCLI Install
+
 To install the AWS CLI, run the following command
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
-Run the following command to check if AWS CLI is installed correctly:
-aws –version
-You see the following output
- 
 
-Step 3: Create AWS account 
-After Creating 
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+unzip awscliv2.zip
+
+sudo ./aws/install
+
+Run the following command to check if AWS CLI is installed correctly:
+
+aws –version
+
+You see the following output
+
+![Image26](https://github.com/gurpreet2828/Terraform-Jenkins/blob/9317912a18f09494599ddd1548eddd9f660531a7/Images/Image26.png)
+
+## Step 3: Create AWS account
+
+After Creating
+
 Click on account name - Select Security Credentials
+
+
  
 
 
